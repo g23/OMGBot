@@ -28,10 +28,21 @@ import scala.collection.mutable._
 import io._
 
 object Bot {
+  /* words are stored based on a key that has to do with
+     unique prime factorization.
+   */
   var words: HashMap[BigInteger, List[String]] = new HashMap[BigInteger, List[String]]
+  
+  /* val primes maps char's to prime numbers for uniqueness */
   val primes = Array(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101)  
+  
+  /* lightning fast keypresser :D */
   val robo = new Robot()
 
+  /* compute the word score
+   * a=2, b=3, c=5, etc..
+   * wordscore is the product of all letters
+   */
   def wordScore(word: String) = {
     var res = new BigInteger("1")
     for (c <- word.toLowerCase()) {
@@ -40,6 +51,10 @@ object Bot {
     }
     res
   }
+
+  /*
+   * compute the wordscore for each word
+   */
   def processWords() = {
     val lines = Source.fromFile("web2.txt").getLines()
     var res = new BigInteger("1")
@@ -55,6 +70,10 @@ object Bot {
     }
   }
 
+  /* find anagrams and words that can be made from one another
+   * anagrams have same wordscore - unique prime factorization
+   * words that can be made from one another have a gcd > 1
+   */
   def anagrams(word: String) = {
     val ws = wordScore(word)
     var res: List[String] = List()
@@ -67,6 +86,7 @@ object Bot {
     res
   }
 
+  /* make the robot do work */
   def typeWord(word: String) = {
     // click the area
     robo.mousePress(InputEvent.BUTTON1_MASK)
@@ -81,6 +101,7 @@ object Bot {
     robo.keyRelease(KeyEvent.VK_ENTER)
   }
 
+  /* main bot loop */
   def main(args: Array[String]) = {
     println("Beginning to process words")
     processWords()
