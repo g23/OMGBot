@@ -10,4 +10,6 @@ It'll take a few moments to prepocess the wordlist then it'll ask for the shuffl
 
 It's probably inefficient since it uses BigIntegers when Longs would probably suffice. That doesn't really matter though as it's too fast already.
 
+Video at: http://www.youtube.com/watch?v=LLda2yseqD8
+
 Open source MIT Licensed - do whatever with this code.
