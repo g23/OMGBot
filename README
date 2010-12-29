@@ -1,1 +1,13 @@
 This is a simple Scala Bot that plays many games of LetterBlox on OMGPOP.
+
+To use:
+
+Compile with scala or fsc: fsc Bot.scala
+
+Then run: scala Bot
+
+It'll take a few moments to prepocess the wordlist then it'll ask for the shuffled list. Then you have 5 seconds to move your mouse over the game area. The bot will then click and start typing all the words.
+
+It's probably inefficient since it uses BigIntegers when Longs would probably suffice. That doesn't really matter though as it's too fast already.
+
+Open source MIT Licensed - do whatever with this code.
